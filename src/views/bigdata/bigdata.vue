@@ -441,8 +441,8 @@ export default {
     getgroup () {
       let that = this
       axios.get('http://api.25cl.cn/project/Bigdata/getgroup').then((res) => {
-        console.log(res.data)
-        console.log(that.options)
+        // console.log(res.data)
+        // console.log(that.options)
         that.options = res.data
       })
     },
@@ -458,8 +458,8 @@ export default {
       that.deviceSelectData['pm2.5'] = []
       that.deviceSelectData['so2'] = []
       that.deviceSelectData['sendtime'] = []
-      console.log(that.value)
-      console.log(that.value2[0])
+      // console.log(that.value)
+      // console.log(that.value2[0])
       axios
         .get('http://api.25cl.cn/project/bigdata/getDeviceData', {
           params: {
@@ -469,7 +469,7 @@ export default {
           }
         })
         .then((res) => {
-          console.log(res.data)
+          // console.log(res.data)
           res.data.forEach((v) => {
             that.deviceSelectData['aqi'].push(v['aqi'] === '_' ? 0 : v['aqi'])
             that.deviceSelectData['co'].push(v['co'] === '_' ? 0 : v['co'])
@@ -485,7 +485,7 @@ export default {
             that.deviceSelectData['sendtime'].push(
               v['sendtime'] === '_' ? 0 : v['sendtime']
             )
-            console.log(that.deviceSelectData)
+            // console.log(that.deviceSelectData)
             that.map.centerAndZoom(new BMapGL.Point(102, 34), 6)
             setTimeout(function () {
               that.map.centerAndZoom(
@@ -523,7 +523,7 @@ export default {
               }
             })
           }
-          console.log(data)
+          // console.log(data)
           var layer = new mapvgl.IconLayer({
             width: 14,
             height: 14,
@@ -533,12 +533,12 @@ export default {
             selectedIndex: -1, // 选中项
             selectedColor: '#ff0000', // 选中项颜色
             autoSelect: true, // 根据鼠标位置来自动设置选中项
-            pick: (e) => {},
+            pick: (e) => {console.log(e)},
             onClick: (e) => {
               // 点击事件
               that.nowid = e.dataIndex + 1
               that.selectNowData()
-              console.log(e)
+              // console.log(e)
               if (e.dataIndex > 0) {
                 that.map.centerAndZoom(
                   new BMapGL.Point(
@@ -551,7 +551,7 @@ export default {
             },
             onMousemove: (e) => {
               if (e.dataIndex > 0) {
-                console.log(e)
+                // console.log(e)
                 var nowdata =
                   e.dataItem.geometry.coordinates[0] +
                   ',' +
@@ -713,21 +713,21 @@ export default {
             })
           }
           // console.log(heatpoint)
-          that.heatmap = new mapvgl.HeatmapLayer({
-            size: 20, // 单个点绘制大小
-            max: that.typeMax[that.sortType], // 最大阈值
-            height: 0, // 最大高度，默认为0
-            unit: 'px', // 单位，m:米，px: 像素
-            gradient: {
-              // 对应比例渐变色
-              0.0: 'rgb(50, 50, 256)',
-              0.1: 'rgb(50, 250, 56)',
-              0.5: 'rgb(250, 250, 56)',
-              1.0: 'rgb(250, 50, 56)'
-            }
-          })
-          that.view.addLayer(that.heatmap)
-          that.heatmap.setData(heatpoint)
+          // that.heatmap = new mapvgl.HeatmapLayer({
+          //   size: 20, // 单个点绘制大小
+          //   max: that.typeMax[that.sortType], // 最大阈值
+          //   height: 0, // 最大高度，默认为0
+          //   unit: 'px', // 单位，m:米，px: 像素
+          //   gradient: {
+          //     // 对应比例渐变色
+          //     0.0: 'rgb(50, 50, 256)',
+          //     0.1: 'rgb(50, 250, 56)',
+          //     0.5: 'rgb(250, 250, 56)',
+          //     1.0: 'rgb(250, 50, 56)'
+          //   }
+          // })
+          // that.view.addLayer(that.heatmap)
+          // that.heatmap.setData(heatpoint)
         })
     },
     selectTop (type) {

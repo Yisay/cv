@@ -1,6 +1,7 @@
 <template>
   <div style="background-color: #fff; width: 100%; height: 100%">
-    <div
+    
+    <!-- <div
       style="
         position: absolute;
         background-color: #eeeeeeee;
@@ -79,7 +80,7 @@
           <div><el-tag>Drawer 抽屉</el-tag></div>
         </el-collapse-item>
       </el-collapse>
-    </div>
+    </div> -->
     <div 
     style="
         position: absolute;
@@ -92,13 +93,20 @@
     <el-popover
       placement="right"
       width="400"
-      trigger="click"
+      trigger="manual"
+      v-model="menuvisible"
       @click.stop>
     <div
       style="padding: 4px;"
     >
       组件信息
       <el-divider></el-divider>
+      <el-input
+        v-model="showCp"
+        @change="changeCP('cp', showCp)"
+      >
+        <template slot="prepend">组件类型</template>
+      </el-input>
       <el-input
         v-model="showId"
         @change="changeCP('id', showId)"
@@ -126,15 +134,17 @@
       添加组件
       <el-divider></el-divider>
       <el-button-group>
-  <el-button type="primary" >当前位置前</el-button>
-  <el-button type="primary">子组件</el-button>
-  <el-button type="primary">当前位置后</el-button>
+  <el-button type="primary" @click="addBefore">添加前</el-button>
+  <el-button type="primary" @click="addChildren">子组件</el-button>
+  <el-button type="primary" @click="addAfter">添加后</el-button>
+  <el-button type="primary" @click="deletecp">删除组件</el-button>
 </el-button-group>
     </div>
-    <el-button type="primary" icon="el-icon-edit" slot="reference" circle></el-button>
+    <el-button type="primary" icon="el-icon-edit" slot="reference" circle @click="menuvisible = !menuvisible"></el-button>
     </el-popover>
     </div>
-    <div id='cpbox' v-html="html" style="width: 100%; height: 100%"></div>
+    <div v-if="array!==undefined&&array.length>0" id='cpbox' v-html="html" style="width: 100%; height: 100%"></div>
+    <div v-else id='cpbox' style="width: 100%; height: 100%;background-color:#eee;padding:1px" @click="newbox">点击新建box</div>
   </div>
 </template>
 
@@ -142,65 +152,104 @@
 export default {
   data() {
     return {
-      key: "",
-      showId: "",
-      showClass: "",
-      showStyle: "",
-      showHeader: "",
-      array: [
-        {
-          cp: "div",
-          id: "",
-          class: "",
-          style: "width:100%;height:100%;background-color:#000",
-          header: "",
-          children: [
-            {
-              cp: "div",
-              id: "",
-              class: "",
-              style: "width:50%;height:50%;background-color:#fff",
-              header: "",
-              children: [],
-            },
-          ],
-        },
-      ],
+      key: '',
+      fid: '',
+      showCp:'div',
+      showId: '',
+      showClass: '',
+      showStyle: '',
+      showHeader: '',
+      array: [],
       nodes: [],
       html: "",
+      menuvisible: false
     };
   },
   mounted() {},
   methods: {
+    addChildren() {
+      this.nodes[this.key].children.push({
+          cp: "div",
+          id: "",
+          class: "",
+          style: "width:50%;height:50%;background-color:#aa0",
+          header: "",
+          children: []
+        })
+      console.log(this.array)
+      this.createdCP()
+    },
     changeCP(item, value) {
       console.log(this.key)
       this.nodes[this.key][item] = value
       this.createdCP();
     },
+    addBefore () {
+      let childrens = this.nodes[this.fid].children
+      for(let index in childrens){
+        if(childrens[index]=== this.nodes[this.key]){
+          childrens.splice(index,0,{
+          cp: "div",
+          id: "",
+          class: "",
+          style: "width:50%;height:50%;background-color:#bbb",
+          header: "",
+          children: []
+        })
+          this.createdCP()
+          break
+        }
+      }
+    },
+    deletecp () {
+      let childrens = this.nodes[this.fid].children
+      for(let index in childrens){
+        if(childrens[index]=== this.nodes[this.key]){
+          childrens.splice(index,1)
+          this.createdCP()
+          break
+        }
+      }
+    },
+    newbox () {
+      let test = {
+          cp: "div",
+          id: "",
+          class: "",
+          style: "width:100%;height:100%",
+          header: "",
+          children: []
+        }
+      this.array.push(test)
+      this.createdCP()
+    },
+    
     createdCP() {
       this.html = ""
       this.nodes = []
-      this.digui(this.array)
+      console.log('111')
+      this.html = this.digui('root',this.array)
     },
-    showCP(key) {
+    showCP(fid,key) {
       event.cancelBubble=true
+      this.fid = fid
       this.key = key
       let node = this.nodes[key]
-      console.log(node)
-      console.log(node.style)
+      this.showCp = node.cp
       this.showId = node.id
       this.showClass = node.class
       this.showStyle = node.style
       this.showHeader = node.header
     },
-    digui(a) {
+    digui(fid,a) {
       let that = this
+      let h = ''
       for (let item of a) {
         let code = 'cp'+ parseInt(Math.random() * 1000)
         this.nodes[code] = item
-        if (item.children !== undefined) {
-          this.html =
-            this.html +
+        if (item.children !== undefined && item.children.length>0) {
+          h =
+            h +
             `<` +
             item.cp +
             ` id="` +
@@ -211,16 +260,16 @@ export default {
             item.style +
             `" ` +
             item.header +
-            ` onclick="showCP('` +
+            ` onclick="showCP('`+ fid +`','` +
             code +
             `')" >` +
-            this.digui(item.children) +
+            this.digui(code,item.children) +
             `</` +
             item.cp +
             `>`
-        } else {
-          this.html =
-            this.html +
+        } else{
+          h =
+            h +
             `<` +
             item.cp +
             ` id="` +
@@ -231,14 +280,14 @@ export default {
             item.style +
             `" ` +
             item.header +
-            ` onclick="showCP('` +
+            ` onclick="showCP('`+ fid +`','` +
             code +
             `')" ></` +
             item.cp +
             `>`
         }
       }
-      return this.html
+      return h
     },
     move(e){
 				let odiv = e.target;// 获取目标元素
