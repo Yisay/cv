@@ -11,7 +11,7 @@
     >
       <el-collapse>
         <el-collapse-item title="Basic">
-          <div @click="addarray"><el-tag>Layout 布局</el-tag></div>
+          <div @click="createdCP"><el-tag>Layout 布局</el-tag></div>
           <div><el-tag>Container 布局容器</el-tag></div>
           <div><el-tag>Color 色彩</el-tag></div>
           <div><el-tag>Typography 字体</el-tag></div>
@@ -80,123 +80,207 @@
         </el-collapse-item>
       </el-collapse>
     </div>
-    <div
-      style="
+    <div 
+    style="
         position: absolute;
-        background-color: #eeeeeeee;
+        background-color: #cccccc60;
         right: 0px;
-        width: 200px;
-        height: 90%;
-        padding: 4px;
+        width: 42px;
+        height: 42px;
       "
+      @mousedown="move">
+    <el-popover
+      placement="right"
+      width="400"
+      trigger="click"
+      @click.stop>
+    <div
+      style="padding: 4px;"
     >
       组件信息
       <el-divider></el-divider>
-      <el-input placeholder="请输入内容">
+      <el-input
+        v-model="showId"
+        @change="changeCP('id', showId)"
+      >
         <template slot="prepend">id</template>
       </el-input>
-      <el-input placeholder="请输入内容">
+      <el-input
+        v-model="showClass"
+        @change="changeCP('class', showClass)"
+      >
         <template slot="prepend">class</template>
       </el-input>
-      <el-input placeholder="请输入内容">
+      <el-input
+        v-model="showStyle"
+        @change="changeCP('style', showStyle)"
+      >
         <template slot="prepend">style</template>
       </el-input>
-      <el-input placeholder="请输入内容">
+      <el-input
+        v-model="showHeader"
+        @change="changeCP('header', showHeader)"
+      >
         <template slot="prepend">内容</template>
       </el-input>
+      添加组件
+      <el-divider></el-divider>
+      <el-button-group>
+  <el-button type="primary" >当前位置前</el-button>
+  <el-button type="primary">子组件</el-button>
+  <el-button type="primary">当前位置后</el-button>
+</el-button-group>
     </div>
-  <div>
-    <treelist v-for="value in items" :item="value" :key="value.id"></treelist>
-  </div>
+    <el-button type="primary" icon="el-icon-edit" slot="reference" circle></el-button>
+    </el-popover>
+    </div>
+    <div id='cpbox' v-html="html" style="width: 100%; height: 100%"></div>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
+      key: "",
+      showId: "",
+      showClass: "",
+      showStyle: "",
+      showHeader: "",
       array: [
         {
-          cp: 'div',
-          id: '',
-          class: '',
-          style: 'width:100%;height:100%;background-color:#000',
-          header: '',
-          body: ''
-        }
-      ],
-      items: [
-        { id: '10', parent_id: '0', sort: '0', name: '其它', status: '0' },
-        { id: '12', parent_id: '0', sort: '0', name: '测试', status: '0' },
-        {
-          id: '1',
-          parent_id: '0',
-          sort: '0',
-          name: '水果',
-          status: '0',
+          cp: "div",
+          id: "",
+          class: "",
+          style: "width:100%;height:100%;background-color:#000",
+          header: "",
           children: [
-            { id: '4', parent_id: '1', sort: '0', name: '香蕉', status: '0' }
-          ]
-        },
-        {
-          id: '2',
-          parent_id: '0',
-          sort: '0',
-          name: '饮料',
-          status: '0',
-          children: [
-            { id: '5', parent_id: '2', sort: '0', name: '可乐', status: '0' },
             {
-              id: '6',
-              parent_id: '2',
-              sort: '0',
-              name: '酒水',
-              status: '0',
-              children: [
-                {
-                  id: '7',
-                  parent_id: '6',
-                  sort: '0',
-                  name: '啤酒',
-                  status: '0'
-                }
-              ]
-            }
-          ]
+              cp: "div",
+              id: "",
+              class: "",
+              style: "width:50%;height:50%;background-color:#fff",
+              header: "",
+              children: [],
+            },
+          ],
         },
-        {
-          id: '3',
-          parent_id: '0',
-          sort: '0',
-          name: '美食',
-          status: '0',
-          children: [
-            { id: '8', parent_id: '3', sort: '0', name: '红烧鱼', status: '0' }
-          ]
-        }
       ],
-      html: ''
+      nodes: [],
+      html: "",
+    };
+  },
+  mounted() {},
+  methods: {
+    changeCP(item, value) {
+      console.log(this.key)
+      this.nodes[this.key][item] = value
+      this.createdCP();
+    },
+    createdCP() {
+      this.html = ""
+      this.nodes = []
+      this.digui(this.array)
+    },
+    showCP(key) {
+      event.cancelBubble=true
+      this.key = key
+      let node = this.nodes[key]
+      console.log(node)
+      console.log(node.style)
+      this.showId = node.id
+      this.showClass = node.class
+      this.showStyle = node.style
+      this.showHeader = node.header
+    },
+    digui(a) {
+      let that = this
+      for (let item of a) {
+        let code = 'cp'+ parseInt(Math.random() * 1000)
+        this.nodes[code] = item
+        if (item.children !== undefined) {
+          this.html =
+            this.html +
+            `<` +
+            item.cp +
+            ` id="` +
+            item.id +
+            `" class="` +
+            item.class +
+            `" style="` +
+            item.style +
+            `" ` +
+            item.header +
+            ` onclick="showCP('` +
+            code +
+            `')" >` +
+            this.digui(item.children) +
+            `</` +
+            item.cp +
+            `>`
+        } else {
+          this.html =
+            this.html +
+            `<` +
+            item.cp +
+            ` id="` +
+            item.id +
+            `" class="` +
+            item.class +
+            `" style="` +
+            item.style +
+            `" ` +
+            item.header +
+            ` onclick="showCP('` +
+            code +
+            `')" ></` +
+            item.cp +
+            `>`
+        }
+      }
+      return this.html
+    },
+    move(e){
+				let odiv = e.target;// 获取目标元素
+				
+				//计算出鼠标相对点击元素的位置,e.clientX获取的是鼠标的位置，OffsetLeft是元素相对于外层元素的位置
+				let x = e.clientX - odiv.offsetLeft;
+				let y = e.clientY - odiv.offsetTop;
+				document.onmousemove = (e) => {
+					// 获取拖拽元素的位置
+					let left = e.clientX - x;
+					let top = e.clientY - y;
+					this.positionX = left;
+					this.positionY = top;
+					//console.log(document.documentElement.clientHeight,odiv.offsetHeight)
+					// 把拖拽元素 放到 当前的位置
+					if (left <= 0) {
+						left = 0;
+					} else if (left >= document.documentElement.clientWidth - odiv.offsetWidth){
+						//document.documentElement.clientWidth 屏幕的可视宽度
+						left = document.documentElement.clientWidth - odiv.offsetWidth;
+					}
+					
+					if (top <= 0) {
+						top = 0;
+					} else if (top >= document.documentElement.clientHeight - odiv.offsetHeight){
+						// document.documentElement.clientHeight 屏幕的可视高度
+						top = document.documentElement.clientHeight - odiv.offsetHeight
+						
+					}
+					odiv.style.left = left + "px";
+					odiv.style.top = top + "px"
+					
+				}
+                // 为了防止 火狐浏览器 拖拽阴影问题
+				document.onmouseup = (e) => {
+					document.onmousemove = null;
+            		document.onmouseup = null
+				}
     }
   },
-  mounted () {},
-  methods: {
-    addarray () {
-      let that = this
-      console.log(this.html)
-      for (let value of that.array) {
-        that.html =
-          that.html +
-          '<' +
-          value.cp +
-          ' class' +
-          value.class +
-          ' style="' +
-          value.style +
-          '"></' +
-          value.cp +
-          '>'
-      }
-    }
-  }
+  created() {
+    window.showCP = this.showCP
+  },
 }
 </script>
