@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <title></title>
+  <script src="https://webapi.amap.com/loca?v=1.3.2&key=42090929d8d0ce40cfc38138c5753002"></script>
+  <script src="https://webapi.amap.com/maps?v=2.0&key=42090929d8d0ce40cfc38138c5753002&plugin=Map3D"></script>
+  <script src="//webapi.amap.com/ui/1.1/main.js?v=1.1.1"></script>
+
+  <script src="//api.map.baidu.com/api?type=webgl&v=1.0&ak=6YFC0vihCpU44YFbsfNEY1xZLEwbgCWK"></script>
+  <script src="//mapv.baidu.com/build/mapv.min.js"></script>
+  <script src="static/common.js"></script>
+  <script src="https://code.bdstatic.com/npm/mapvgl@1.0.0-beta.75/dist/mapvgl.min.js"></script>
+  <script src="https://code.bdstatic.com/npm/mapvgl@1.0.0-beta.75/dist/mapvgl.threelayers.min.js"></script>
+  
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1890693_meq4vjejk0f.css">
+  </link>
+</head>
+<body>
+  <style>
+    [class*="el-icons-"],
+    [class^=el-icons-] {
+      font-family: "iconfont" !important;
+      font-style: normal;
+      font-weight: 400;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      font-size: 16px;
+      vertical-align: baseline;
+      display: inline-block;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      padding: 0px;
+      margin: 0px;
+      height: 100%;
+    }
+
+    #app {
+      padding: 0px;
+      height: 100%;
+      margin: 0px;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    .span-link:hover {
+      color: #ff6a00;
+    }
+
+    .span-link {
+      color: #696969;
+      font-size: 15px;
+      line-height: 20px;
+      letter-spacing: 1px;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .ml-10 {
+      margin-left: 10px;
+    }
+
+    .el-container {
+      height: 100%;
+    }
+
+    .font14 {
+      line-height: 24px;
+      font-size: 14px;
+    }
+
+    .font13 {
+      font-size: 13px;
+    }
+
+    .font12 {
+      font-size: 12px;
+    }
+
+    .font11 {
+      font-size: 11px;
+    }
+
+    .font10 {
+      font-size: 10px;
+    }
+
+    .font20 {
+      font-size: 20px;
+    }
+
+    .myselfinfohader {
+      margin-left: 20px;
+      width: 50px;
+    }
+
+    .avaterbox {
+      height: 80px;
+      margin: 20px;
+    }
+
+    .el-footer {
+      padding: 0px;
+      text-align: center;
+      line-height: 60px;
+    }
+
+    div {
+      padding: 0px;
+      margin: 0px;
+    }
+
+    .m2 {
+      margin: 2px;
+    }
+
+    .ml-8 {
+      margin-left: 8px;
+    }
+
+    .mt-8 {
+      margin-top: 8px;
+    }
+
+    .ml-20 {
+      margin-left: 20px;
+    }
+
+    .p2 {
+      padding: 2px;
+    }
+
+    .p4 {
+      padding: 4px;
+    }
+
+    .p8 {
+      padding: 8px;
+    }
+
+    .el-main,
+    .el-header {
+      margin: 0px;
+      padding: 3px;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .lh40 {
+      line-height: 40px;
+    }
+
+    .w50 {
+      width: 50px;
+      min-width: 50px
+    }
+
+    .c696969 {
+      color: #696969;
+    }
+
+    .bgf5 {
+      background-color: #f5f5f5;
+    }
+
+    .dateinput input {
+      background-color: #00000000;
+      padding: 0px;
+      border: none;
+      font-size: 16px;
+      color: #000;
+    }
+
+    .dateinput .el-input__inner {
+      padding: 0px;
+    }
+
+    .aligncenter {
+      clear: both;
+      display: block;
+      margin: 10px auto;
+    }
+
+    .fillheight {
+      height: 100%;
+    }
+
+    .el-popover {
+      min-width: 40px;
+      padding: 0px;
+      border: none;
+    }
+
+    .el-popper .popper__arrow,
+    .el-popper .popper__arrow::after {
+      border-style: none;
+    }
+
+    .el-tree-node__content {
+      height: 40px;
+    }
+
+    .list-link:hover {
+      background: #dfdcdb;
+    }
+
+    .scroll_config::-webkit-scrollbar {
+      /*滚动条整体样式*/
+      width: 1px;
+    }
+
+    .scroll_config::-webkit-scrollbar-thumb {
+      /*滚动条里面小方块*/
+      background-color: #ccc;
+      border-radius: 1px;
+    }
+
+    .scroll_config::-webkit-scrollbar-track {
+      /*滚动条里面轨道*/
+      background: rgba(0, 0, 0, 0);
+    }
+
+    .scroll_config::-webkit-scrollbar-arrow {
+      color: rgba(0, 0, 0, 0);
+      background: rgba(0, 0, 0, 0);
+    }
+
+    .inputupdate:focus {
+      outline: #a0a0a0 solid 1px;
+    }
+
+    .inputupdate {
+      outline: none;
+    }
+    .oneDeviceSelect .el-cascader,
+    .oneDeviceSelect .el-cascader .el-input,
+    .oneDeviceSelect .el-input__inner,
+    .oneDeviceSelect input,
+    .oneDeviceSelect .el-cascader input{
+      background-color: #00000000;
+      color: #fff;
+    }
+    .el-collapse-item__header {
+      background-color: #00000000;
+    }
+
+    .el-collapse-item__header.is-active {
+      background-color: #e0e0e0;
+    }
+
+    .el-collapse-item__wrap {
+      background-color: #00000000;
+    }
+
+    .el-collapse-item__content {
+      padding-bottom: 8px;
+    }
+
+    .el-input-group__prepend,
+    .el-input__inner {
+      padding: 0px 4px;
+    }
+
+    .el-checkbox-button__inner {
+      padding: 8px 16px;
+      border: 1px solid #dcdfe6;
+      border-radius: 3px;
+    }
+  </style>
+  <script src="http://ip.ws.126.net/ipquery"></script>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+
+</html>
