@@ -101,7 +101,7 @@
     >
       组件信息
       <el-divider></el-divider>
-      <el-input
+    <el-input
         v-model="showCp"
         @change="changeCP('cp', showCp)"
       >
@@ -134,10 +134,8 @@
       添加组件
       <el-divider></el-divider>
       <el-button-group>
-  <el-button type="primary" @click="addBefore">添加前</el-button>
-  <el-button type="primary" @click="addChildren">子组件</el-button>
-  <el-button type="primary" @click="addAfter">添加后</el-button>
-  <el-button type="primary" @click="deletecp">删除组件</el-button>
+        <el-button type="primary" @click="dialogNewCPVisible=true">添加组件</el-button>
+        <el-button type="primary" @click="deletecp">删除组件</el-button>
 </el-button-group>
     </div>
     <el-button type="primary" icon="el-icon-edit" slot="reference" circle @click="menuvisible = !menuvisible"></el-button>
@@ -145,6 +143,47 @@
     </div>
     <div v-if="array!==undefined&&array.length>0" id='cpbox' v-html="html" style="width: 100%; height: 100%"></div>
     <div v-else id='cpbox' style="width: 100%; height: 100%;background-color:#eee;padding:1px" @click="newbox">点击新建box</div>
+  <el-dialog title="新组件" :visible.sync="dialogNewCPVisible">
+
+    <el-select v-model="newCp" placeholder="组件类型">
+      <el-option-group
+        v-for="group in options"
+        :key="group.label"
+        :label="group.label">
+        <el-option
+          v-for="item in group.options"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+        </el-option>
+      </el-option-group>
+    </el-select>
+      <el-input
+        v-model="newId"
+      >
+        <template slot="prepend">id</template>
+      </el-input>
+      <el-input
+        v-model="newClass"
+      >
+        <template slot="prepend">class</template>
+      </el-input>
+      <el-input
+        v-model="newStyle"
+      >
+        <template slot="prepend">style</template>
+      </el-input>
+      <el-input
+        v-model="newHeader"
+      >
+        <template slot="prepend">内容</template>
+      </el-input>
+      <el-button-group>
+        <el-button type="primary" @click="addBefore">添加前</el-button>
+        <el-button type="primary" @click="addChildren">子组件</el-button>
+        <el-button type="primary" @click="addAfter">添加后</el-button>
+      </el-button-group>
+</el-dialog>
   </div>
 </template>
 
@@ -159,21 +198,53 @@ export default {
       showClass: '',
       showStyle: '',
       showHeader: '',
+      newCp:'',
+      newId:'',
+      newClass:'',
+      newStyle:'',
+      newHeader:'',
       array: [],
       nodes: [],
+      options: [{
+          label: '文本类型',
+          options: [{
+            value: 'a',
+            label: '超文本链接 a'
+          }, {
+            value: 'div',
+            label: '节点'
+          }]
+        }, {
+          label: '城市名',
+          options: [{
+            value: 'Chengdu',
+            label: '成都'
+          }, {
+            value: 'Shenzhen',
+            label: '深圳'
+          }, {
+            value: 'Guangzhou',
+            label: '广州'
+          }, {
+            value: 'Dalian',
+            label: '大连'
+          }]
+        }],
       html: "",
-      menuvisible: false
+      menuvisible: false,
+      dialogNewCPVisible: false
     };
   },
   mounted() {},
   methods: {
     addChildren() {
+      this.dialogNewCPVisible = true
       this.nodes[this.key].children.push({
-          cp: "div",
-          id: "",
-          class: "",
-          style: "width:50%;height:50%;background-color:#aa0",
-          header: "",
+          cp: this.newCp,
+          id: this.newId,
+          class: this.newClass,
+          style: this.newStyle,
+          header: this.newHeader,
           children: []
         })
       console.log(this.array)
@@ -185,15 +256,34 @@ export default {
       this.createdCP();
     },
     addBefore () {
+      this.dialogNewCPVisible = true
       let childrens = this.nodes[this.fid].children
       for(let index in childrens){
         if(childrens[index]=== this.nodes[this.key]){
           childrens.splice(index,0,{
-          cp: "div",
-          id: "",
-          class: "",
-          style: "width:50%;height:50%;background-color:#bbb",
-          header: "",
+          cp: this.newCp,
+          id: this.newId,
+          class: this.newClass,
+          style: this.newStyle,
+          header: this.newHeader,
+          children: []
+        })
+          this.createdCP()
+          break
+        }
+      }
+    },
+    addAfter () {
+      this.dialogNewCPVisible = true
+      let childrens = this.nodes[this.fid].children
+      for(let index in childrens){
+        if(childrens[index]=== this.nodes[this.key]){
+          childrens.splice(index+1,0,{
+          cp: this.newCp,
+          id: this.newId,
+          class: this.newClass,
+          style: this.newStyle,
+          header: this.newHeader,
           children: []
         })
           this.createdCP()
