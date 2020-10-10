@@ -19,11 +19,8 @@
           <el-menu-item index="/bigdata">大数据展示平台</el-menu-item>
           <el-menu-item index="/redog">在线爬虫</el-menu-item>
           <el-menu-item index="/bms">后台管理系统</el-menu-item>
-          <el-submenu index="2-4">
-            <template slot="title">小工具</template>
-            <el-menu-item index="2-4-1">编码类</el-menu-item>
-            <el-menu-item index="2-4-2">小软件</el-menu-item>
-          </el-submenu>
+          <el-menu-item index="/diycp">图形化html编辑器</el-menu-item>
+          <el-menu-item index="/tool">工具类</el-menu-item>
         </el-submenu>
         <el-menu-item index="3">联系我</el-menu-item>
         <el-menu-item index="/about">关于网站</el-menu-item>

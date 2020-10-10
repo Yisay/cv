@@ -25,6 +25,9 @@ var constantRouterMap = [
     path: '/diycp', component: _import('diycp/diycp')
   },
   {
+    path: '/tool', component: _import('tool/tool')
+  },
+  {
     path: '/bigdata', component: _import('bigdata/bigdata')
   }
 ]

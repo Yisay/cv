@@ -19,7 +19,7 @@
     >
       腐蚀监测大数据平台
     </div>
-    
+
     <!--左侧-->
     <div
       style="
@@ -533,7 +533,7 @@ export default {
             selectedIndex: -1, // 选中项
             selectedColor: '#ff0000', // 选中项颜色
             autoSelect: true, // 根据鼠标位置来自动设置选中项
-            pick: (e) => {console.log(e)},
+            pick: (e) => { console.log(e) },
             onClick: (e) => {
               // 点击事件
               that.nowid = e.dataIndex + 1
