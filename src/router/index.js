@@ -33,6 +33,21 @@ var constantRouterMap = [
       },
       {
         path: '/tool/timestamp', component: _import('tool/timestamp/timestamp')
+      },
+      {
+        path: '/tool/strhex', component: _import('tool/strhex/strhex')
+      },
+      {
+        path: '/tool/bcc', component: _import('tool/bcc/bcc')
+      },
+      {
+        path: '/tool/lrc', component: _import('tool/lrc/lrc')
+      },
+      {
+        path: '/tool/portScan', component: _import('tool/portScan/portScan')
+      },
+      {
+        path: '/tool/countdown', component: _import('tool/countdown/countdown')
       }
     ]
   },
