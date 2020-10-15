@@ -48,6 +48,12 @@ var constantRouterMap = [
       },
       {
         path: '/tool/countdown', component: _import('tool/countdown/countdown')
+      },
+      {
+        path: '/tool/apiTest', component: _import('tool/apiTest/apiTest')
+      },
+      {
+        path: '/tool/qrcode', component: _import('tool/qrcode/qrcode')
       }
     ]
   },
