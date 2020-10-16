@@ -4,7 +4,7 @@ module.exports = {
         AMap: 'AMap',
         AMapUI: 'AMapUI',
         BMap: 'BMap',
-        mavgl: 'mavgl'
+        mavgl: 'mavgl',
          }
     }
   };

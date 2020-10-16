@@ -267,6 +267,8 @@ export default {
     },
     // 提交创建新文件
     newfile () {
+      this.$message({
+        message: '为了安全仅做功能展示 代码片段' + ` 
       // 隐藏对话框
       this.newFileDialogVisible = false
       // axios 异步提交
@@ -282,9 +284,12 @@ export default {
           console.log(res.data)
           this.ls(this.nowpath)
         })
+        `})
     },
     // 删除文件 参数表格行信息
     rm (row) {
+      this.$message({
+        message: '为了安全仅做功能展示 代码片段' + ` 
       axios
         .get('http://api.25cl.cn/project/bms/rm', {
           params: {
@@ -296,8 +301,11 @@ export default {
           console.log(res.data)
           this.ls(this.nowpath)
         })
+        `})
     },
     batchrm () {
+      this.$message({
+        message: '为了安全仅做功能展示 代码片段' + ` 
       console.log(this.multipleSelection)
       for (var index = 0; index < this.multipleSelection.length; index++) {
         axios
@@ -312,16 +320,19 @@ export default {
             this.ls(this.nowpath)
           })
       }
+      `})
     },
     // 下载文件(不可用于下载文件夹)
     dfile (row) {
+      this.$message({
+        message: '为了安全仅做功能展示 代码片段' + ` 
       // 调用window自带的open方法 打开新的窗口访问方法 获取资源链接
       window.open(
         'http://api.25cl.cn/project/bms/dfile?path = ' +
           encodeURI(this.nowpath) +
           '&filename = ' +
           encodeURI(row.name)
-      )
+      )`})
     },
     // 格式化路径
     redpath (path) {
@@ -341,20 +352,28 @@ export default {
     },
     // 创建新建目录对话框
     newDir () {
+      this.$message({
+        message: '为了安全仅做功能展示 代码片段' + ` 
       this.newFileTitle = '新建目录' // 设置对话框标题
       this.newFilePlaceholder = '目录名称' // 设置输入框提示文字
       this.type = 'dir' // 设置类型为文件夹
       this.newFileDialogVisible = true // 显示对话框
+      `})
     },
     // 创建新建文件对话框
     newFile () {
+      this.$message({
+        message: '为了安全仅做功能展示 代码片段' + ` 
       this.newFileTitle = '新建空白文件' // 设置对话框标题
       this.newFilePlaceholder = '文件名' // 设置输入框提示文字
       this.type = 'file' // 设置类型为文件
       this.newFileDialogVisible = true // 显示对话框
+      `})
     },
     // 创建重命名对话框
     mvname (row) {
+      this.$message({
+        message: '为了安全仅做功能展示 代码片段' + ` 
       this.newFileTitle = '重命名' // 设置对话框标题
       this.oldfilename = row.name // 设置旧文件名
       this.newfilename = row.name // 设置新文件名(初始化设置 防止重命名指令变为移动指令)
@@ -362,17 +381,22 @@ export default {
       this.mvNameDialogVisible = true // 显示重命名对话框
       this.oldpath = this.nowpath // 设置旧路径为当前路径
       this.type = 2 // 类型为操作类型
+      `})
     },
     // 剪切或复制开始 参数row 选择的行 参数 type 类型 0为复制 1为粘贴 2为重命名
     mvstart (row, type) {
+      this.$message({
+        message: '为了安全仅做功能展示 代码片段' + ` 
       this.oldfilename = row.name // 设置旧名字为选中行的文件名
       this.newfilename = '' // 设置新名字为'' 防止mv变为移动重命名
       this.oldpath = this.nowpath // 设置旧路径为当前路径
       this.ztshow = true // 显示粘贴按钮
       this.type = type // 类型为操作类型
+      `})
     },
     batchmvstart (type) {
-      this.oldfilename = '{' // 旧文件名
+      this.$message({
+        message: '为了安全仅做功能展示 代码片段' + `      this.oldfilename = '{' // 旧文件名
       console.log(this.multipleSelection)
       for (var index = 0; index < this.multipleSelection.length; index++) {
         this.oldfilename =
@@ -385,14 +409,21 @@ export default {
       this.newfilename = '' // 设置新名字为'' 防止mv变为移动重命名
       this.oldpath = this.nowpath // 设置旧路径为当前路径
       this.ztshow = true // 显示粘贴按钮
-      this.type = type // 类型为操作类型
+      this.type = type // 类型为操作类型'
+      `
+      })
     },
     // 剪切或复制结束(粘贴键点击事件)
     mvend () {
+      this.$message({
+        message: '为了安全仅做功能展示 代码片段' + ` 
       this.mv() // 调用 mv事件
       this.ztshow = false // 隐藏粘贴键
+      `})
     },
     mv () {
+      this.$message({
+        message: '为了安全仅做功能展示 代码片段' + ` 
       this.mvNameDialogVisible = false // 隐藏重命名对话框
       axios
         .get('http://api.25cl.cn/project/bms/mv', {
@@ -409,6 +440,7 @@ export default {
 
           this.ls(this.nowpath)
         })
+        `})
     },
     uploaddialog () {
       this.action =
@@ -416,6 +448,8 @@ export default {
       this.uploadDialogVisible = true
     },
     batchtardialog () {
+      this.$message({
+        message: '为了安全仅做功能展示 代码片段' + ` 
       this.tarstartfilename = ''
       for (var index = 0; index < this.multipleSelection.length; index++) {
         this.tarstartfilename =
@@ -423,6 +457,7 @@ export default {
       }
       this.tarendfilename = this.multipleSelection[0].name
       this.tarNameDialogVisible = true
+      `})
     },
     tardialog (row) {
       this.tarstartfilename = row.name
