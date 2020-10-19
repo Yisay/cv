@@ -1,5 +1,5 @@
 <template>
-  <el-container style="height:100%;">
+  <el-container style="height: 100%">
     <el-header>
       <el-menu
         :default-active="activeIndex2"
@@ -10,7 +10,7 @@
         text-color="#fff"
         active-text-color="#ffd04b"
         :router="true"
-        style="padding-right:20px;display:flex;justify-content:flex-end;"
+        style="padding-right: 20px; display: flex; justify-content: flex-end"
       >
         <el-menu-item index="/">首页</el-menu-item>
         <el-submenu index="2">
@@ -27,22 +27,25 @@
       </el-menu>
     </el-header>
     <el-main
-      style="height:100%;background-image:url('https://c-ssl.duitang.com/uploads/item/202003/07/20200307001150_fVEXz.jpeg')"
+      style="
+        height: 100%;
+        background-image: url('https://c-ssl.duitang.com/uploads/item/202003/07/20200307001150_fVEXz.jpeg');
+      "
     >
-      <el-row :gutter="6" style="height:100%">
-        <el-col :span="5" style="height:100%">
-          <el-card shadow="hover" style="height:100%;overflow-y:auto">
+      <el-row :gutter="6" style="height: 100%">
+        <el-col :span="5" style="height: 100%">
+          <el-card shadow="hover" style="height: 100%; overflow-y: auto">
             <div class="avaterbox">
               <el-avatar :size="80" src="../../assets/logo.png"></el-avatar>
             </div>
-            <div style="overflow-y:auto">
+            <div style="overflow-y: auto">
               <div>
                 <span class="span-link font14">
                   <span class="ml-20">
                     姓名
                     <el-divider direction="vertical" />
                   </span>
-                  <span style="color:#606e6">姜涛</span>
+                  <span style="color: #606e6">{{myinfo.name}}</span>
                 </span>
               </div>
               <div>
@@ -51,79 +54,92 @@
                     求职职位
                     <el-divider direction="vertical" />
                   </span>
-                  <span style="color:#ff4040">php工程师</span>
+                  <span style="color: #ff4040">{{myinfo.request}}</span>
                 </span>
               </div>
               <el-divider content-position="center">基本信息</el-divider>
               <div>
                 <span class="span-link font14">
                   <span class="ml-20">
-                    男
-                    <el-divider direction="vertical" />23
-                    <el-divider direction="vertical" />福州连江
+                    {{myinfo.sex}}
+                    <el-divider direction="vertical" />{{myinfo.age}}
+                    <el-divider direction="vertical" />{{myinfo.address}}
                   </span>
                 </span>
               </div>
               <div>
-                <span class="span-link ml-20 font14">电话：18094042560</span>
+                <span class="span-link ml-20 font14">电话：{{myinfo.phone}}</span>
               </div>
               <div>
-                <span class="span-link ml-20 font14">邮箱：jtyisay@163.com</span>
+                <span class="span-link ml-20 font14"
+                  >邮箱：{{myinfo.email}}</span
+                >
               </div>
               <div>
                 <el-divider content-position="center">自我评价</el-divider>
                 <div class="font14">
                   <span>一年运维工程师经验</span>
-                  <div class="ml-8" style="width:90%">
+                  <div class="ml-8" style="width: 90%">
                     <div class="span-link font14">
                       在职期间发现
-                      <span style="color:#ffa600">数十起</span>由程序或环境引起的bug
-                      <span style="color:#60e000">并解决</span>
+                      <span style="color: #ffa600">数十起</span
+                      >由程序或环境引起的bug
+                      <span style="color: #60e000">并解决</span>
                     </div>
-                    <div class="span-link font14">我认为程序的逻辑是思维表达的过程，</div>
+                    <div class="span-link font14">
+                      我认为程序的逻辑是思维表达的过程，
+                    </div>
                     <div class="span-link font14">
                       解决问题的能力就是
-                      <span style="color:#a00606">清楚的逻辑</span>能力
+                      <span style="color: #a00606">清楚的逻辑</span>能力
                     </div>
                   </div>
                 </div>
               </div>
               <el-divider content-position="center">总结</el-divider>
-              <div style="width:90%">
-                <div class="span-link ml-8 font14">工作像学习，只有不断地去扩展知识面，才能把思维发散出去。</div>
-                <div class="span-link ml-8 mt-8 font14">每个人的处事抉择里，都藏着他读过的书，走过的路</div>
+              <div style="width: 90%">
+                <div class="span-link ml-8 font14">
+                  工作像学习，只有不断地去扩展知识面，才能把思维发散出去。
+                </div>
+                <div class="span-link ml-8 mt-8 font14">
+                  每个人的处事抉择里，都藏着他读过的书，走过的路
+                </div>
               </div>
             </div>
           </el-card>
         </el-col>
-        <el-col :span="14" style="height:100%">
-          <el-card shadow="hover" style="height:96%;;margin:6px;margin-top:1%">
+        <el-col :span="14" style="height: 100%">
+          <el-card
+            shadow="hover"
+            style="height: 96%; margin: 6px; margin-top: 1%"
+          >
             <el-tabs type="border-card">
               <el-tab-pane label="工作经历">
-                <div style="display:flex;justify-content:space-between">
+                <div style="display: flex; justify-content: space-between">
                   <div>
                     <el-link
                       :underline="false"
                       href="http://www.qianlangtech.com"
                       target="_blank"
-                    >浙江钱浪信息科技有限公司</el-link>
+                      >浙江钱浪信息科技有限公司</el-link
+                    >
                   </div>
                   <div class="font14">2019/年10月-2020年10月</div>
                 </div>
-                <div style="color:#696969">运维工程师</div>
-                <div>主要工作职责:</div>
+                <div style="color: #696969">运维工程师</div>
+                <ul>主要工作职责:<li>维护服务器稳定，</li><li>优化数据库查询代码，</li><li>协助后端编写项目接口</li></ul>
+                <ul>主要工作成绩:<li>编写运维管理工具实现数据管理智能化；</li><li>根据网页操作结合云数据库响应时长优化相关数据库操作代码</li><li></li></ul>
                 <div></div>
               </el-tab-pane>
               <el-tab-pane label="项目经历">
                 <div>公司：杭州恒领科技有限公司</div>
                 <div>项目：T3出行Tbox</div>
                 <div>产品名称：HL685 驾驶安全辅助监控终端</div>
-                <div>主要负责内容：检测</div>
+                <div>主要负责内容：TBOX开发板功能测试主要涵盖（modbus协议，MQTT通讯。开发板组件功能测试）</div>
                 <el-divider></el-divider>
                 <div>公司：浙江钱浪智能信息科技有限公司</div>
-                <div>项目：T3出行Tbox</div>
-                <div>产品名称：HL685 驾驶安全辅助监控终端</div>
-                <div>主要负责内容：检测</div>
+                <div>项目：国家环境腐蚀大数据平台</div>
+                <div>主要负责内容：编写数据库运维管理工具，数据方面（实现数据成图成表，选取设备数据导出）。设备方面（监听设备端口，下发指令给设备）</div>
               </el-tab-pane>
               <el-tab-pane label="技能及证书">
                 <div>证书:</div>
@@ -142,7 +158,10 @@
                 <div>
                   <div class="span-link">语言类</div>
                   <div class="el-progress el-progress--circle">
-                    <div class="el-progress-circle" style="height: 70px; width: 70px;">
+                    <div
+                      class="el-progress-circle"
+                      style="height: 70px; width: 70px"
+                    >
                       <svg viewBox="0 0 126 126">
                         <path
                           d="M 63 63 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94 "
@@ -160,10 +179,18 @@
                         />
                       </svg>
                     </div>
-                    <div class="el-progress__text" style="font-size: 14px;top:50%">java</div>
+                    <div
+                      class="el-progress__text"
+                      style="font-size: 14px; top: 50%"
+                    >
+                      java
+                    </div>
                   </div>
                   <div class="el-progress el-progress--circle">
-                    <div class="el-progress-circle" style="height: 70px; width: 70px;">
+                    <div
+                      class="el-progress-circle"
+                      style="height: 70px; width: 70px"
+                    >
                       <svg viewBox="0 0 126 126">
                         <path
                           d="M 63 63 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94 "
@@ -181,10 +208,18 @@
                         />
                       </svg>
                     </div>
-                    <div class="el-progress__text" style="font-size: 14px;top:50%">php</div>
+                    <div
+                      class="el-progress__text"
+                      style="font-size: 14px; top: 50%"
+                    >
+                      php
+                    </div>
                   </div>
                   <div class="el-progress el-progress--circle">
-                    <div class="el-progress-circle" style="height: 70px; width: 70px;">
+                    <div
+                      class="el-progress-circle"
+                      style="height: 70px; width: 70px"
+                    >
                       <svg viewBox="0 0 126 126">
                         <path
                           d="M 63 63 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94 "
@@ -202,13 +237,21 @@
                         />
                       </svg>
                     </div>
-                    <div class="el-progress__text" style="font-size: 14px;top:50%">python</div>
+                    <div
+                      class="el-progress__text"
+                      style="font-size: 14px; top: 50%"
+                    >
+                      python
+                    </div>
                   </div>
                 </div>
                 <div>
                   <div class="span-link">框架类</div>
                   <div class="el-progress el-progress--circle">
-                    <div class="el-progress-circle" style="height: 70px; width: 70px;">
+                    <div
+                      class="el-progress-circle"
+                      style="height: 70px; width: 70px"
+                    >
                       <svg viewBox="0 0 126 126">
                         <path
                           d="M 63 63 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94 "
@@ -226,10 +269,18 @@
                         />
                       </svg>
                     </div>
-                    <div class="el-progress__text" style="font-size: 14px;top:50%">tp5</div>
+                    <div
+                      class="el-progress__text"
+                      style="font-size: 14px; top: 50%"
+                    >
+                      tp5
+                    </div>
                   </div>
                   <div class="el-progress el-progress--circle">
-                    <div class="el-progress-circle" style="height: 70px; width: 70px;">
+                    <div
+                      class="el-progress-circle"
+                      style="height: 70px; width: 70px"
+                    >
                       <svg viewBox="0 0 126 126">
                         <path
                           d="M 63 63 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94 "
@@ -247,10 +298,18 @@
                         />
                       </svg>
                     </div>
-                    <div class="el-progress__text" style="font-size: 14px;top:50%">vue</div>
+                    <div
+                      class="el-progress__text"
+                      style="font-size: 14px; top: 50%"
+                    >
+                      vue
+                    </div>
                   </div>
                   <div class="el-progress el-progress--circle">
-                    <div class="el-progress-circle" style="height: 70px; width: 70px;">
+                    <div
+                      class="el-progress-circle"
+                      style="height: 70px; width: 70px"
+                    >
                       <svg viewBox="0 0 126 126">
                         <path
                           d="M 63 63 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94 "
@@ -268,13 +327,21 @@
                         />
                       </svg>
                     </div>
-                    <div class="el-progress__text" style="font-size: 14px;top:50%">python</div>
+                    <div
+                      class="el-progress__text"
+                      style="font-size: 14px; top: 50%"
+                    >
+                      python
+                    </div>
                   </div>
                 </div>
                 <div>
                   <div class="span-link">通讯类</div>
                   <div class="el-progress el-progress--circle">
-                    <div class="el-progress-circle" style="height: 70px; width: 70px;">
+                    <div
+                      class="el-progress-circle"
+                      style="height: 70px; width: 70px"
+                    >
                       <svg viewBox="0 0 126 126">
                         <path
                           d="M 63 63 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94 "
@@ -292,10 +359,18 @@
                         />
                       </svg>
                     </div>
-                    <div class="el-progress__text" style="font-size: 14px;top:50%">mqtt</div>
+                    <div
+                      class="el-progress__text"
+                      style="font-size: 14px; top: 50%"
+                    >
+                      mqtt
+                    </div>
                   </div>
                   <div class="el-progress el-progress--circle">
-                    <div class="el-progress-circle" style="height: 70px; width: 70px;">
+                    <div
+                      class="el-progress-circle"
+                      style="height: 70px; width: 70px"
+                    >
                       <svg viewBox="0 0 126 126">
                         <path
                           d="M 63 63 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94 "
@@ -313,10 +388,18 @@
                         />
                       </svg>
                     </div>
-                    <div class="el-progress__text" style="font-size: 14px;top:50%">workman</div>
+                    <div
+                      class="el-progress__text"
+                      style="font-size: 14px; top: 50%"
+                    >
+                      workman
+                    </div>
                   </div>
                   <div class="el-progress el-progress--circle">
-                    <div class="el-progress-circle" style="height: 70px; width: 70px;">
+                    <div
+                      class="el-progress-circle"
+                      style="height: 70px; width: 70px"
+                    >
                       <svg viewBox="0 0 126 126">
                         <path
                           d="M 63 63 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94 "
@@ -334,14 +417,24 @@
                         />
                       </svg>
                     </div>
-                    <div class="el-progress__text" style="font-size: 14px;top:50%">python</div>
+                    <div
+                      class="el-progress__text"
+                      style="font-size: 14px; top: 50%"
+                    >
+                      python
+                    </div>
                   </div>
                 </div>
               </el-tab-pane>
               <el-tab-pane label="教育经历">
                 <div>
                   <el-divider content-position="left">
-                    <el-link :underline="false" href="http://www.lyun.edu.cn" target="_blank">龙岩学院</el-link>
+                    <el-link
+                      :underline="false"
+                      href="http://www.lyun.edu.cn"
+                      target="_blank"
+                      >龙岩学院</el-link
+                    >
                   </el-divider>
                   <div class="font14">专业：物联网工程</div>
                   <div class="font14">时间：2015-2019</div>
@@ -353,7 +446,8 @@
                       :underline="false"
                       href="http://www.must.edu.tw"
                       target="_blank"
-                    >台湾明新科技大学</el-link>
+                      >台湾明新科技大学</el-link
+                    >
                   </el-divider>
                   <div class="font14">专业：资讯工程</div>
                   <div class="font14">时间：2017-2018</div>
@@ -365,21 +459,24 @@
             </el-tabs>
           </el-card>
         </el-col>
-        <el-col :span="5" style="height:100%">
-          <div style="height:100%;overflow-y:auto">
+        <el-col :span="5" style="height: 100%">
+          <div style="height: 100%; overflow-y: auto">
             <el-card class="box-card" shadow="hover">
-              <div class="span-link">来自：{{city}}的访客,欢迎您</div>
+              <div class="span-link">来自：{{ city }}的访客,欢迎您</div>
             </el-card>
             <el-card class="box-card mt-8" shadow="hover">
               <div>
                 <div class="span-link">
                   <i class="el-icons-chengshi font20"></i>
-                  杭州 {{weaterday}}
+                  杭州 {{ weaterday }}
                 </div>
-                <div class="span-link">天气：{{dayType}}</div>
-                <div style="display:flex">
+                <div class="span-link">天气：{{ dayType }}</div>
+                <div style="display: flex">
                   <div class="el-progress el-progress--dashboard">
-                    <div class="el-progress-circle" style="height: 100px; width: 100px;">
+                    <div
+                      class="el-progress-circle"
+                      style="height: 100px; width: 100px"
+                    >
                       <svg viewBox="0 0 100 100">
                         <path
                           d="M 50 50 m 0 45 a 45 45 0 1 1 0 -90 a 45 45 0 1 1 0 90 "
@@ -387,7 +484,10 @@
                           stroke-width="8.6"
                           fill="none"
                           class="el-progress-circle__track"
-                          style="stroke-dasharray: 212.058px, 282.743px; stroke-dashoffset: -35.3429px;"
+                          style="
+                            stroke-dasharray: 212.058px, 282.743px;
+                            stroke-dashoffset: -35.3429px;
+                          "
                         />
                         <path
                           d="M 50 50 m 0 45 a 45 45 0 1 1 0 -90 a 45 45 0 1 1 0 90"
@@ -402,11 +502,14 @@
                     </div>
                     <div class="span-link el-progress__text">
                       <i class="el-icons-wendu" />
-                      {{wendu}}℃
+                      {{ wendu }}℃
                     </div>
                   </div>
                   <div class="el-progress el-progress--dashboard ml-8">
-                    <div class="el-progress-circle" style="height: 100px; width: 100px;">
+                    <div
+                      class="el-progress-circle"
+                      style="height: 100px; width: 100px"
+                    >
                       <svg viewBox="0 0 100 100">
                         <path
                           d="M 50 50 m 0 45 a 45 45 0 1 1 0 -90 a 45 45 0 1 1 0 90 "
@@ -414,7 +517,10 @@
                           stroke-width="8.6"
                           fill="none"
                           class="el-progress-circle__track"
-                          style="stroke-dasharray: 212.058px, 282.743px; stroke-dashoffset: -35.3429px;"
+                          style="
+                            stroke-dasharray: 212.058px, 282.743px;
+                            stroke-dashoffset: -35.3429px;
+                          "
                         />
                         <path
                           d="M 50 50 m 0 45 a 45 45 0 1 1 0 -90 a 45 45 0 1 1 0 90"
@@ -429,26 +535,28 @@
                     </div>
                     <div class="span-link el-progress__text">
                       <i class="el-icons-shidu" />
-                      {{shidu}}%
+                      {{ shidu }}%
                     </div>
                   </div>
                 </div>
                 <div class="flex">
                   <div class="span-link">
                     <i class="el-icons-maxwendu font20" />
-                    最{{maxwendu}}
+                    最{{ maxwendu }}
                   </div>
                   <div class="span-link ml-8">
                     <i class="el-icons-minwendu font20" />
-                    最{{minwendu}}
+                    最{{ minwendu }}
                   </div>
                 </div>
-                <div class="span-link font14 mt-8">数据更新时间{{weaterUpDateTime}}</div>
+                <div class="span-link font14 mt-8">
+                  数据更新时间{{ weaterUpDateTime }}
+                </div>
               </div>
             </el-card>
             <el-card class="box-card mt-8" shadow="hover">
               <div class="span-link">当前时间：</div>
-              <div style="height:100px;width:240px;margin:10px">
+              <div style="height: 100px; width: 240px; margin: 10px">
                 <div
                   role="progressbar"
                   aria-valuenow="0"
@@ -456,7 +564,7 @@
                   aria-valuemax="100"
                   class="el-progress el-progress--dashboard"
                 >
-                  <div style="height: 80px; width: 240px;">
+                  <div style="height: 80px; width: 240px">
                     <svg viewBox="0 0 240 80">
                       <path
                         d="m4,80.453125c16,-30 53,-74 116,-73.000002c63.36464,1 101,42 116,73"
@@ -464,13 +572,37 @@
                         stroke-width="7"
                         fill="none"
                       />
-                      <linearGradient id="sky" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#64f38c;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#f79d00;stop-opacity:1" />
+                      <linearGradient
+                        id="sky"
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="0%"
+                      >
+                        <stop
+                          offset="0%"
+                          style="stop-color: #64f38c; stop-opacity: 1"
+                        />
+                        <stop
+                          offset="100%"
+                          style="stop-color: #f79d00; stop-opacity: 1"
+                        />
                       </linearGradient>
-                      <linearGradient id="night" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#F8CDDA;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#1D2B64;stop-opacity:1" />
+                      <linearGradient
+                        id="night"
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="0%"
+                      >
+                        <stop
+                          offset="0%"
+                          style="stop-color: #f8cdda; stop-opacity: 1"
+                        />
+                        <stop
+                          offset="100%"
+                          style="stop-color: #1d2b64; stop-opacity: 1"
+                        />
                       </linearGradient>
                       <path
                         d="m4,80.453125c16,-30 56,-73 116,-73.000002c63.36464,1 101,40 116,80"
@@ -483,22 +615,56 @@
                       />
                     </svg>
                   </div>
-                  <div class="span-link el-progress__text" style="top:80%">
+                  <div class="span-link el-progress__text" style="top: 80%">
                     <i class="el-icons-shizhong" />
-                    {{gettime}}
+                    {{ gettime }}
                   </div>
                 </div>
-                <div style="display: flex; justify-content:space-between">
-                  <div class="span-link" :class="timestarticon">{{timestart}}</div>
-                  <div class="span-link" :class="timeendicon">{{timeend}}</div>
+                <div style="display: flex; justify-content: space-between">
+                  <div class="span-link" :class="timestarticon">
+                    {{ timestart }}
+                  </div>
+                  <div class="span-link" :class="timeendicon">
+                    {{ timeend }}
+                  </div>
                 </div>
               </div>
-              <div class="span-link">{{houremessage}}</div>
+              <div class="span-link">{{ houremessage }}</div>
             </el-card>
             <el-card class="box-card mt-8" shadow="hover">
               意见/建议箱
+              <el-popover
+                placement="top-start"
+                title="历史建议"
+                width="300"
+                trigger="click"
+              >
+              <div v-for="(item,index) in suggestions" :key="index">
+                <div>
+                  <div class="flex">
+                    <div style="flex:1">
+                      Q:{{item.suggestion}}
+                    </div>
+                    <div style="width:80px">
+                      {{item.suggestiontime}}
+                    </div>
+                  </div>
+                  <div class="flex" style="font-size:12px;margin-left:12px">
+                    A:<div>
+                      {{item.result}}
+                    </div>
+                    <div style="padding-left:10px;width:80px">
+                      {{item.resulttime}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <el-button slot="reference" style="padding: 0" size="small"
+                  >历史</el-button
+                >
+              </el-popover>
               <el-input type="textarea" v-model="textarea"></el-input>
-              <el-button style="width:100%">提交</el-button>
+              <el-button style="width: 100%">提交</el-button>
             </el-card>
           </div>
         </el-col>
@@ -533,16 +699,34 @@ export default {
       timeendicon: 'el-icon-sunset',
       nowtimesvg: 0,
       oldhoure: 0,
-      houremessage: ''
+      houremessage: '',
+      myinfo: '',
+      suggestions: [
+        {suggestion: '页面美化', suggestiontime: '123456789', result: '已优化', resulttime: '123456789'},
+        {suggestion: '简介详细', suggestiontime: '123456789', result: '已修改', resulttime: '123456789'}
+      ]
     }
   },
   methods: {
+    index_init () {
+      let that = this
+      let params = new URLSearchParams()
+      params.append('keys', JSON.stringify({'keys': ['myinfo', 'myinfo1']}))
+      axios.post('http://api.25cl.cn/index/index', params).then(res => {
+        console.log(JSON.parse(res.data.myinfo))
+        that.myinfo = JSON.parse(res.data.myinfo)
+        console.log(that.myinfo)
+      })
+    },
     citySN () {
       var that = this // eslint-disable-next-line no-undef
       that.city = lc
       that.citytianqi()
     },
-    getTime: function () {
+    requestMessageBoard () {
+      console.log('requestMessageBoard')
+    },
+    getTime () {
       var that = this
       let yy = new Date().getFullYear()
       let mm = new Date().getMonth() + 1
@@ -575,9 +759,9 @@ export default {
       if (hh !== that.oldhoure) {
         if (hh < 4) {
           that.houremessage = '夜已深了，注意休息~'
-        } else if (hh < 6) {
+        } else if (hh < 8) {
           that.houremessage = '早上好！新的一天开始咯~'
-        } else if (hh < 11) {
+        } else if (hh < 12) {
           that.houremessage = '上午好！'
         } else if (hh < 13) {
           that.houremessage = '中午好！午饭记得按时吃哦.'
@@ -667,6 +851,7 @@ export default {
     }
   },
   mounted () {
+    this.index_init()
     this.citySN()
     this.currentTime()
   }

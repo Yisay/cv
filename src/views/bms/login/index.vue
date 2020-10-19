@@ -86,7 +86,7 @@ export default {
               if (res.data.token != null) {
                 localStorage.setItem('userinfo', JSON.stringify(res.data.userinfo))
                 localStorage.setItem('token', res.data.token)
-                localStorage.setItem('userid', res.data.userinfo['acnumber'])
+                localStorage.setItem('userid', res.data.userinfo['id'])
                 console.log(window.localStorage.getItem('userinfo'))
                 console.log(window.localStorage.getItem('token'))
                 console.log(window.localStorage.getItem('userid'))

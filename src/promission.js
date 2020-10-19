@@ -8,7 +8,7 @@ var getRouter
 router.beforeEach((to, from, next) => {
   console.log(getRouter)
   // 判断是否为登录界面和主界面，如是则中断
-  if (to.path === '/bms/login' || to.path === '/' || to.path === '/chat' || to.path === '/bigdata') {
+  if (to.path === '/bms/login' || to.path === '/' || to.path === '/chat' || to.path === '/bigdata' || to.path === '/bms' || to.path === '/redog' || to.path === '/diycp' || to.path === '/about' || to.path === '/tool') {
     console.log('执行中断')
     next()
   }
