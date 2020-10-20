@@ -17,7 +17,7 @@
         font-size: 24px;
       "
     >
-      腐蚀监测大数据平台
+      环境监测大数据平台
     </div>
 
     <!--左侧-->
@@ -31,9 +31,46 @@
         z-index: 999;
       "
     >
-    <el-menu default-active="/" :router="true" style="width:120px;height:20px;background-color:#00000050">
-        <el-menu-item index="/" style="width:120px;height:20px;background-color:#00000050;line-height:20px">返回主页</el-menu-item>
+    <div class="flex">
+      <el-menu
+        default-active="/"
+        :router="true"
+        style="width: 120px; height: 20px; background-color: #00000050"
+      >
+        <el-menu-item
+          index="/"
+          style="
+            width: 120px;
+            height: 20px;
+            background-color: #00000050;
+            line-height: 20px;
+          "
+          >返回主页</el-menu-item
+        >
       </el-menu>
+      <el-popover
+        placement="top-start"
+        title="操作指南"
+        width="240"
+        trigger="click"
+      >
+      <div style="padding:8px">
+        <div class="font14" style="text-indent: 1em;">鼠标左键点击:放大地图、查看设备最新一条数据。</div>
+        <div class="font14" style="text-indent: 1em;">鼠标右键点击：缩小还原地图。</div>
+        <div class="font14" style="text-indent: 1em;">鼠标滑动至设备：查看设备名及经纬度。</div>
+        <div class="font14" style="text-indent: 1em;">左侧显示排行榜及范围选取单一设备某时间段数据。</div>
+      </div>
+
+        <el-button slot="reference" style="
+            width: 120px;
+            height: 20px;
+            border: 0;
+            background-color: #00000050;
+            line-height: 20px;
+            padding:0px;
+          ">查看操作</el-button>
+      </el-popover>
+      </div>
       <div
         style="
           min-width: 280px;
@@ -107,12 +144,12 @@
             </div>
           </div>
           <div v-if="dataSort.length > 0" style="margin-top: 8px">
-            <div
-              v-for="i in 10"
-              :key="i"
-              style="color: #a0a0a0; margin: 8px"
-            >
-              <div class="flex" v-if="changeSort == 1" @click="showTopdevice(dataSort[i].id)">
+            <div v-for="i in 10" :key="i" style="color: #a0a0a0; margin: 8px">
+              <div
+                class="flex"
+                v-if="changeSort == 1"
+                @click="showTopdevice(dataSort[i].id)"
+              >
                 <div
                   style="
                     width: 120px;
@@ -128,7 +165,11 @@
                   ><a>{{ dataSort[i][sortType] }}</a>
                 </div>
               </div>
-              <div class="flex" v-if="changeSort == 0" @click="showTopdevice(dataSort[dataSort.length - i].id)">
+              <div
+                class="flex"
+                v-if="changeSort == 0"
+                @click="showTopdevice(dataSort[dataSort.length - i].id)"
+              >
                 <div
                   style="
                     width: 120px;
@@ -341,7 +382,7 @@
  * *************************************************************
  * *************************************************************
  */
-import axios from 'axios'
+import axios from 'Axios'
 import echarts from 'echarts'
 export default {
   data () {
@@ -533,7 +574,9 @@ export default {
             selectedIndex: -1, // 选中项
             selectedColor: '#ff0000', // 选中项颜色
             autoSelect: true, // 根据鼠标位置来自动设置选中项
-            pick: (e) => { console.log(e) },
+            pick: (e) => {
+              console.log(e)
+            },
             onClick: (e) => {
               // 点击事件
               that.nowid = e.dataIndex + 1

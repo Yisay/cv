@@ -45,7 +45,7 @@
                     姓名
                     <el-divider direction="vertical" />
                   </span>
-                  <span style="color: #606e6">{{myinfo.name}}</span>
+                  <span style="color: #606e6">{{ myinfo.name }}</span>
                 </span>
               </div>
               <div>
@@ -54,25 +54,27 @@
                     求职职位
                     <el-divider direction="vertical" />
                   </span>
-                  <span style="color: #ff4040">{{myinfo.request}}</span>
+                  <span style="color: #ff4040">{{ myinfo.request }}</span>
                 </span>
               </div>
               <el-divider content-position="center">基本信息</el-divider>
               <div>
                 <span class="span-link font14">
                   <span class="ml-20">
-                    {{myinfo.sex}}
-                    <el-divider direction="vertical" />{{myinfo.age}}
-                    <el-divider direction="vertical" />{{myinfo.address}}
+                    {{ myinfo.sex }}
+                    <el-divider direction="vertical" />{{ myinfo.age }}
+                    <el-divider direction="vertical" />{{ myinfo.address }}
                   </span>
                 </span>
               </div>
               <div>
-                <span class="span-link ml-20 font14">电话：{{myinfo.phone}}</span>
+                <span class="span-link ml-20 font14"
+                  >电话：{{ myinfo.phone }}</span
+                >
               </div>
               <div>
                 <span class="span-link ml-20 font14"
-                  >邮箱：{{myinfo.email}}</span
+                  >邮箱：{{ myinfo.email }}</span
                 >
               </div>
               <div>
@@ -121,25 +123,57 @@
                       :underline="false"
                       href="http://www.qianlangtech.com"
                       target="_blank"
-                      >浙江钱浪信息科技有限公司</el-link
-                    >
+                      >浙江钱浪信息科技有限公司<i class="el-icon-link"></i
+                    ></el-link>
                   </div>
-                  <div class="font14">2019/年10月-2020年10月</div>
+                  <div class="font14">2019年10月-2020年10月</div>
                 </div>
                 <div style="color: #696969">运维工程师</div>
-                <ul>主要工作职责:<li>维护服务器稳定，</li><li>优化数据库查询代码，</li><li>协助后端编写项目接口</li></ul>
-                <ul>主要工作成绩:<li>编写运维管理工具实现数据管理智能化；</li><li>根据网页操作结合云数据库响应时长优化相关数据库操作代码</li><li></li></ul>
+                <ul>
+                  主要工作职责:
+                  <li>维护服务器稳定，</li>
+                  <li>优化数据库查询代码，</li>
+                  <li>协助后端编写项目接口</li>
+                </ul>
+                <ul>
+                  主要工作成绩:
+                  <li>编写运维管理工具实现数据管理智能化；</li>
+                  <li>
+                    根据网页操作结合云数据库响应时长优化相关数据库操作代码
+                  </li>
+                  <li></li>
+                </ul>
                 <div></div>
               </el-tab-pane>
               <el-tab-pane label="项目经历">
-                <div>公司：杭州恒领科技有限公司</div>
-                <div>项目：T3出行Tbox</div>
-                <div>产品名称：HL685 驾驶安全辅助监控终端</div>
-                <div>主要负责内容：TBOX开发板功能测试主要涵盖（modbus协议，MQTT通讯。开发板组件功能测试）</div>
+                <div class="font14">公司：杭州恒领科技有限公司</div>
+                <div class="font14">项目：T3出行车载智能终端</div>
+                <div>
+                  <el-link
+                    :underline="false"
+                    href="http://www.hopeleadtech.com/product/adas-box/hl685"
+                    target="_blank"
+                    >产品名称：HL685 驾驶安全辅助监控终端<i
+                      class="el-icon-link"
+                  /></el-link>
+                </div>
+                <div>
+                  <el-link
+                    :underline="false"
+                    href="https://www.t3go.cn/"
+                    target="_blank"
+                    >应用场景：T3出行<i class="el-icon-link"
+                  /></el-link>
+                </div>
+                <div class="font14">
+                  主要负责内容：TBOX开发板功能测试主要涵盖（modbus协议，MQTT通讯。开发板组件功能测试）
+                </div>
                 <el-divider></el-divider>
-                <div>公司：浙江钱浪智能信息科技有限公司</div>
-                <div>项目：国家环境腐蚀大数据平台</div>
-                <div>主要负责内容：编写数据库运维管理工具，数据方面（实现数据成图成表，选取设备数据导出）。设备方面（监听设备端口，下发指令给设备）</div>
+                <div class="font14">公司：浙江钱浪智能信息科技有限公司</div>
+                <div class="font14">项目：国家环境腐蚀大数据平台</div>
+                <div class="font14">
+                  主要负责内容：编写数据库运维管理工具，数据方面（实现数据成图成表，选取设备数据导出）。设备方面（监听设备端口，下发指令给设备）
+                </div>
               </el-tab-pane>
               <el-tab-pane label="技能及证书">
                 <div>证书:</div>
@@ -335,96 +369,6 @@
                     </div>
                   </div>
                 </div>
-                <div>
-                  <div class="span-link">通讯类</div>
-                  <div class="el-progress el-progress--circle">
-                    <div
-                      class="el-progress-circle"
-                      style="height: 70px; width: 70px"
-                    >
-                      <svg viewBox="0 0 126 126">
-                        <path
-                          d="M 63 63 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94 "
-                          stroke="#e5e9f2"
-                          stroke-width="6"
-                          fill="none"
-                          style="stroke-dasharray: 295.31px, 295.31px"
-                        />
-                        <path
-                          d="M 63 63 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94 "
-                          stroke="#20a0ff"
-                          fill="none"
-                          stroke-width="15"
-                          style="stroke-dasharray: 160px, 295.31px"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="el-progress__text"
-                      style="font-size: 14px; top: 50%"
-                    >
-                      mqtt
-                    </div>
-                  </div>
-                  <div class="el-progress el-progress--circle">
-                    <div
-                      class="el-progress-circle"
-                      style="height: 70px; width: 70px"
-                    >
-                      <svg viewBox="0 0 126 126">
-                        <path
-                          d="M 63 63 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94 "
-                          stroke="#e5e9f2"
-                          stroke-width="6"
-                          fill="none"
-                          style="stroke-dasharray: 295.31px, 295.31px"
-                        />
-                        <path
-                          d="M 63 63 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94 "
-                          stroke="#20a0ff"
-                          fill="none"
-                          stroke-width="15"
-                          style="stroke-dasharray: 186px, 295.31px"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="el-progress__text"
-                      style="font-size: 14px; top: 50%"
-                    >
-                      workman
-                    </div>
-                  </div>
-                  <div class="el-progress el-progress--circle">
-                    <div
-                      class="el-progress-circle"
-                      style="height: 70px; width: 70px"
-                    >
-                      <svg viewBox="0 0 126 126">
-                        <path
-                          d="M 63 63 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94 "
-                          stroke="#e5e9f2"
-                          stroke-width="6"
-                          fill="none"
-                          style="stroke-dasharray: 295.31px, 295.31px"
-                        />
-                        <path
-                          d="M 63 63 m 0 -47 a 47 47 0 1 1 0 94 a 47 47 0 1 1 0 -94 "
-                          stroke="#20a0ff"
-                          fill="none"
-                          stroke-width="15"
-                          style="stroke-dasharray: 140px, 295.31px"
-                        />
-                      </svg>
-                    </div>
-                    <div
-                      class="el-progress__text"
-                      style="font-size: 14px; top: 50%"
-                    >
-                      python
-                    </div>
-                  </div>
-                </div>
               </el-tab-pane>
               <el-tab-pane label="教育经历">
                 <div>
@@ -433,8 +377,8 @@
                       :underline="false"
                       href="http://www.lyun.edu.cn"
                       target="_blank"
-                      >龙岩学院</el-link
-                    >
+                      >龙岩学院<i class="el-icon-link"></i
+                    ></el-link>
                   </el-divider>
                   <div class="font14">专业：物联网工程</div>
                   <div class="font14">时间：2015-2019</div>
@@ -446,15 +390,30 @@
                       :underline="false"
                       href="http://www.must.edu.tw"
                       target="_blank"
-                      >台湾明新科技大学</el-link
-                    >
+                      >台湾明新科技大学<i class="el-icon-link"></i
+                    ></el-link>
                   </el-divider>
                   <div class="font14">专业：资讯工程</div>
                   <div class="font14">时间：2017-2018</div>
                   <div class="font14">主修学科：</div>
                 </div>
               </el-tab-pane>
-              <el-tab-pane label="实习经历">定时任务补偿</el-tab-pane>
+              <el-tab-pane label="实习经历">
+                <el-link
+                  :underline="false"
+                  href="http://www.hopeleadtech.com/"
+                  target="_blank"
+                  style=""
+                  >公司：杭州恒领科技有限公司<i class="el-icon-link"></i
+                ></el-link>
+                <div class="font14">职位：软件测试工程师</div>
+                <div class="font14">任期：2019年5月-2019年7月</div>
+                <ul>
+                  主要工作职责：
+                  <li>编写测试文档</li>
+                  <li>测试</li>
+                </ul>
+              </el-tab-pane>
               <el-tab-pane label="社团经历">定时任务补偿</el-tab-pane>
             </el-tabs>
           </el-card>
@@ -621,10 +580,14 @@
                   </div>
                 </div>
                 <div style="display: flex; justify-content: space-between">
-                  <div class="span-link" :class="timestarticon">
+                  <div
+                    class="span-link"
+                    :class="timestarticon"
+                    title="日出时间"
+                  >
                     {{ timestart }}
                   </div>
-                  <div class="span-link" :class="timeendicon">
+                  <div class="span-link" :class="timeendicon" title="日落时间">
                     {{ timeend }}
                   </div>
                 </div>
@@ -639,26 +602,28 @@
                 width="300"
                 trigger="click"
               >
-              <div v-for="(item,index) in suggestions" :key="index">
-                <div>
-                  <div class="flex">
-                    <div style="flex:1">
-                      Q:{{item.suggestion}}
+                <div v-for="(item, index) in suggestions" :key="index">
+                  <div>
+                    <div class="flex">
+                      <div style="flex: 1">Q:{{ item.suggestion }}</div>
+                      <div style="width: 80px">
+                        {{ item.suggestiontime }}
+                      </div>
                     </div>
-                    <div style="width:80px">
-                      {{item.suggestiontime}}
-                    </div>
-                  </div>
-                  <div class="flex" style="font-size:12px;margin-left:12px">
-                    A:<div>
-                      {{item.result}}
-                    </div>
-                    <div style="padding-left:10px;width:80px">
-                      {{item.resulttime}}
+                    <div
+                      class="flex"
+                      style="font-size: 12px; margin-left: 12px"
+                    >
+                      A:
+                      <div>
+                        {{ item.result }}
+                      </div>
+                      <div style="padding-left: 10px; width: 80px">
+                        {{ item.resulttime }}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
                 <el-button slot="reference" style="padding: 0" size="small"
                   >历史</el-button
                 >
@@ -702,8 +667,18 @@ export default {
       houremessage: '',
       myinfo: '',
       suggestions: [
-        {suggestion: '页面美化', suggestiontime: '123456789', result: '已优化', resulttime: '123456789'},
-        {suggestion: '简介详细', suggestiontime: '123456789', result: '已修改', resulttime: '123456789'}
+        {
+          suggestion: '页面美化',
+          suggestiontime: '123456789',
+          result: '已优化',
+          resulttime: '123456789'
+        },
+        {
+          suggestion: '简介详细',
+          suggestiontime: '123456789',
+          result: '已修改',
+          resulttime: '123456789'
+        }
       ]
     }
   },
@@ -711,8 +686,8 @@ export default {
     index_init () {
       let that = this
       let params = new URLSearchParams()
-      params.append('keys', JSON.stringify({'keys': ['myinfo', 'myinfo1']}))
-      axios.post('http://api.25cl.cn/index/index', params).then(res => {
+      params.append('keys', JSON.stringify({ keys: ['myinfo', 'myinfo1'] }))
+      axios.post('http://api.25cl.cn/index/index', params).then((res) => {
         console.log(JSON.parse(res.data.myinfo))
         that.myinfo = JSON.parse(res.data.myinfo)
         console.log(that.myinfo)

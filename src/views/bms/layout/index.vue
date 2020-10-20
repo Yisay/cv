@@ -5,12 +5,23 @@
         style="background-color:#fff;height:50px;box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 4px 0px;"
       >
         <el-row type="flex" align="middle" style="height:100%">
-          <el-col :span="17">
+          <el-col :span="17" class="flex">
             <a style="font-size:16px">
               <b>
                 <i class="el-icon-orange" /> 后 台 管 理 系 统
               </b>
             </a>
+            <el-menu default-active="" :router="true">
+        <el-menu-item
+          index="/"
+          style="
+            width: 120px;
+            height: 20px;
+            background-color: #00000000;
+            line-height: 20px;
+          "
+          >返回主页</el-menu-item>
+      </el-menu>
           </el-col>
           <el-col :span="7" style=" text-align: center;padding-right:4px;font-size:16px">
             <el-dropdown style="float:right">
@@ -127,6 +138,7 @@ export default {
     logout () {
       localStorage.removeItem('token')
       localStorage.removeItem('userid')
+      localStorage.removeItem('router')
       location.reload()
     }
   },

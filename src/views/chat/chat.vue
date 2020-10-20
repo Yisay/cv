@@ -1,46 +1,41 @@
 <template>
   <el-container style="height: 100%">
     <el-header>
-      <el-menu default-active="/" :router="true">
-        <el-menu-item index="/">返回主页</el-menu-item>
+      <el-menu default-active="" :router="true">
+        <el-menu-item
+          index="/"
+          style="
+            width: 120px;
+            height: 20px;
+            background-color: #00000050;
+            line-height: 20px;
+          "
+          >返回主页</el-menu-item>
       </el-menu>
-    </el-header>
+      </el-header>
     <el-main>
       <el-row class="fillheight">
         <el-col :span="6"
           ><el-collapse v-model="activeName" accordion>
             <el-collapse-item title="实现功能" name="1">
-              <div>
-                登录，注册，添加好友，修改个人信息，修改好友备注，添加拉黑删除好友操作，
-              </div>
-              <div>
-                websorck
-              </div>
+              <ul>
+                <li>登录</li>
+                <li>注册</li>
+                <li>添加好友</li>
+                <li>修改个人信息</li>
+                <li>修改好友备注</li>
+                <li>即时聊天(在线聊天，离线信息，发送emoji)</li>
+                <li>添加拉黑删除好友操作</li>
+              </ul>
             </el-collapse-item>
-            <el-collapse-item title="反馈 Feedback" name="2">
-              <div>
-                控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；
-              </div>
-              <div>
-                页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。
-              </div>
-            </el-collapse-item>
-            <el-collapse-item title="效率 Efficiency" name="3">
-              <div>简化流程：设计简洁直观的操作流程；</div>
-              <div>
-                清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；
-              </div>
-              <div>
-                帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。
-              </div>
-            </el-collapse-item>
-            <el-collapse-item title="可控 Controllability" name="4">
-              <div>
-                用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；
-              </div>
-              <div>
-                结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。
-              </div>
+            <el-collapse-item title="框架" name="2">
+              <ul>
+                <li>前端：vue+element</li>
+                <li>后端：thinkphp5+workerman</li>
+                <li>数据库：mysql</li>
+                <li>thinkphp5(逻辑部分)</li>
+                <li>workerman(通讯部分)</li>
+              </ul>
             </el-collapse-item>
           </el-collapse></el-col
         >

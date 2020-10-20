@@ -45,7 +45,7 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="addfather">确 定</el-button>
+        <el-button type="primary" >确 定</el-button><!--@click="addfather"-->
       </div>
     </el-dialog>
 
@@ -80,7 +80,7 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogchildrenFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="addchildren">确 定</el-button>
+        <el-button type="primary" >确 定</el-button><!--@click="addchildren"-->
       </div>
     </el-dialog>
 
@@ -121,7 +121,7 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogupdateFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="updatemodule">确 定</el-button>
+        <el-button type="primary" >确 定</el-button><!--@click="updatemodule"-->
       </div>
     </el-dialog>
   </el-card>
@@ -566,7 +566,7 @@ export default {
               icon="el-icon-delete"
               plain
               size="mini"
-              on-click={() => this.remove(node, data)}
+              // on-click={() => this.remove(node, data)}
             >
               删除
             </el-button>
